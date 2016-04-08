@@ -37,7 +37,7 @@ section {
     margin-left: 4%;
 }
 #searchbox {
-    border: 2px solid #a9a9a9;
+    border: 1px solid #a9a9a9;
     padding: 2% ;
     border-radius: 30px;
     margin: 1% 10% -1% 10%;
@@ -97,7 +97,7 @@ section {
 #segundaSeccion article ul li {
     margin-bottom: 7%;
     color: #9a9a9a;
-    border-bottom: dashed;
+    border-bottom: dotted;
     font-size: 1em;
     margin-right: 9%;
     padding-bottom: 3%;
