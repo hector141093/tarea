@@ -1,0 +1,74 @@
+body{
+	max-width: 1024px;
+	font-size: 16px;
+	margin: 0 auto;
+	text-align: center;
+	margin-top: 10px;
+	background: black;
+	color:white;
+}
+header img{
+	opacity: 0.5;
+}
+header img:hover{
+	opacity: 1;
+}
+input[type="text"]{
+	font-size: 2em;
+	font-family: 'Bangers', sans-serif;
+ 	padding: 10px;
+ 	-webkit-transform: skew(-11deg,0);
+ 	text-align: center;
+}
+table{
+	border-collapse: collapse; 
+	margin:0 auto;
+}
+th{
+	text-transform: uppercase;
+	font-size: 1.5em;
+	text-align: center;
+	border:5px solid white;
+	color:yellow;
+	background-color: rgba(150,150,150,0.1);
+}
+#btnGenera{
+    border: double 5px solid white;
+    padding: 11px;
+    vertical-align: top;
+    cursor: pointer;
+   	background-color: rgba(229, 17, 13, 0.9);
+    color: white;
+    text-transform: uppercase;
+    font-size: 2em;
+    font-family: 'Bangers', sans-serif;
+    -webkit-transform: skew(-11deg,0);
+
+}
+#btnGenera:hover{
+	background: #FFD700;
+	color:black;
+}
+#tablaHeroes,td,tr{
+	border:5px solid white;
+	font-family: 'Josefin Sans', sans-serif;
+	font-size: 1.1em;
+	background-color: rgba(0,0,150,0.1);
+	/*border-radius: 50%;*/
+}
+#textoBusca{
+	font-style: italic;
+	font-size: 2em;
+	font-family: 'Bangers', sans-serif;
+	  -webkit-text-fill-color: white;
+  	-webkit-text-stroke-color: red;
+  -webkit-text-stroke-width: 0.99px;  
+}
+.imgSuper img{
+	border-radius: 15%;
+	border: 5px solid white;
+	box-shadow:2px 2px 2px 2px #FFFFFF;
+}
+.imgSuper{
+	background: black;
+}

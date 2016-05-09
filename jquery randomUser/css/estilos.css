@@ -1,0 +1,44 @@
+body{
+	max-width: 400px;
+	font-size: 16px;
+	margin: 0 auto;
+	text-align: center;
+	color:white;
+	background-color: black;
+	font-family: 'Poiret One', sans-serif;
+	font-weight: bold;
+}
+.datos{
+	padding-top: 1%;
+	font-weight: bold;
+	font-size: 2.5em;
+}
+#informacion{
+	background-color: rgba(255,255,255, 0.1);
+}
+#informacion img{
+	border-radius: 50%;
+    border: 5px solid white;
+    box-shadow: 2px 3px 16px;
+}
+#hi{
+	margin-top: 10px;
+	color: rgb(220,220,220);
+	font-family: 'Poiret One', cursive;
+	font-size: 2em;
+}
+#miBoton{
+	border:none;
+	background-color: white;
+	color:black;
+	font-family: 'Poiret One',cursive;
+	font-weight: bold;
+	font-size: 1.3em;
+	border-radius: 5%;
+	width: 40%;
+}
+#miBoton:hover{
+	background-color: black;
+	color:white;
+	font-weight: bolder;
+}
