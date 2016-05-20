@@ -25,16 +25,20 @@ var inicio = function(){
 		        		renglon='';		      
 		        		//obj.data.results=heroes		        	
 		        $.each(obj.data.results, function (heroes, heroe ) {
-		            renglon += '<tr><td>' + heroe.name 
-		            		+ '</td><td>' + heroe.description 
-		            		+ '</td><td class="imgSuper">' + "<img class='imgSuper' src='"+heroe.thumbnail.path+'.'+heroe.thumbnail.extension +"' width=150px>"		            				    
-			    			+ '</td>'+'<td>';
-			    			$.each(heroe.comics.items,function(comics,comic){	
+		        	if(!heroe.description){
+		        		heroe.description='Vacío';
+		        	}		        	
+
+		            renglon += '<tr><td width="150px">' + heroe.name 
+		            		+ '</td><td width="400px">' + heroe.description 
+		            		+ '</td><td width="150px">' + "<img class='imgSuper' src='"+heroe.thumbnail.path+'.'+heroe.thumbnail.extension +"' width=150px>"		            				    
+			    			+ '</td>'+'<td width="350px">';
+			    			$.each(heroe.comics.items,function(comics,comic){				    		
 			    				renglon+= comic.name +', ';		    		
-				    			console.log(comic.name);			    					    			
+				    			console.log(comic.name);				    			
 			    			});
-			    			renglon+='</td></tr>';
-			    			
+			    			renglon+='</td></tr>';			    			
+
 		    	});
 
 		        $('#tablaHeroes').append(renglon);

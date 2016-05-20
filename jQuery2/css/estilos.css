@@ -1,0 +1,29 @@
+body{
+	max-width: 1024px;
+	font-size: 16px;
+	margin: 0 auto;
+}
+header nav{
+	display: none;
+	text-align: center;
+}
+header nav ul li{
+	display: inline-block;
+}
+header nav ul li button{
+	width: 89px;
+}
+#altaUsuarios{
+	display: none;
+	margin: 0 auto;
+	width: 320px;
+}
+#bajaUsuarios{
+	display: none;
+	margin: 0 auto;
+	width: 320px;
+}
+#datosUsuario{
+	width: 320px;
+	margin: 0 auto;
+}
