@@ -1,0 +1,51 @@
+body
+{
+	font-size: 16px;
+	margin: 0 auto;
+	max-width: 1024px;
+}
+header nav
+{
+	display: none;
+	text-align: center;
+}
+header nav ul li
+{
+	display: inline-block;	
+}
+header nav ul li button
+{
+	width: 89px;
+}
+header h1{
+	text-align: center;
+}
+#altaUsuarios{
+	display: none;
+	margin: 0 auto;
+	width: 320px;
+}
+#datosUsuario{
+	margin: 0 auto;
+	width: 320px;
+}
+#alertEntra{
+	font-size: 1.5em;
+	text-align: center;
+}
+.alert{
+	display: none;
+	margin: 0 auto;
+	width: 320px;
+}
+
+
+
+
+
+
+
+
+
+
+
