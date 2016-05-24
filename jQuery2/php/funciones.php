@@ -1,6 +1,6 @@
 <?php
 //Funciones
-
+//USUARIO CLAVE TIPO DEPTO
 function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
 {
   $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
@@ -30,11 +30,9 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 
 function validaEntrada()
 {
-//	$usuario = GetSQLValueString($_POST["usuario"],"text");
-//	$clave   = GetSQLValueString(md5($_POST["clave"]),"text");
-	$usuario = GetSQLValueString($_POST["txtUsuario"],"text");
-	$clave   = GetSQLValueString(md5($_POST["txtClave"]),"text");
-	$respuesta = true;
+	$usuario = GetSQLValueString($_POST["usuario"],"text");
+	$clave   = GetSQLValueString(md5($_POST["clave"]),"text");
+	$respuesta = false;
 	//Conecto al servidor de BD
 	//Servidor, usuario, clave
 	$conexion = mysql_connect("localhost","root","");
@@ -73,17 +71,67 @@ function guardaUsuario()
 	$salidaJSON = array('respuesta' => $respuesta);
 	print json_encode($salidaJSON);
 }
+//Agregue
+function LlenarCampos(){
+	$respuesta=false;
+	$usuario = GetSQLValueString($_POST["txtNombreUsuario"],"text");
+	$conexion = mysql_connect("localhost","root","");
+	mysql_select_db("cursopw");
+	mysql_query("SET NAMES utf8"); //caracteres latinos
+	$consulta = sprintf("select * from usuarios where usuario=%s limit 1",$usuario);
+	$resconsulta= mysql_query($consulta);
+	if(mysql_num_rows($resconsulta)>0){ //para saber si hay datos
+		$respuesta= true;
+
+		//rescatar valores
+		$fila=mysql_fetch_array($resconsulta);
+		//$nom= $fila[1];
+		$nom=$fila[0];
+		$cla= $fila[1];
+		$tipo=$fila[2];
+		$depto=$fila[3];
+	}
+
+	$salidaJSON = array ('respuesta'=> $respuesta,'nom'=>$nom,'cla'=>$cla,'tipo'=>$tipo,
+						 'depto'=>$depto);
+	print json_encode ($salidaJSON);
+}
+
 function bajaUsuario(){
-	$usuario = GetSQLValueString($_POST["usuario"],"text");
+	$usuario=GetSQLValueString($_POST["usuario"],"text");
 	$respuesta=false;
 	$conexion=mysql_connect("localhost","root","");
 	mysql_select_db("cursopw");
-	$elimina= sprintf("delete from usuarios where usuario=%s",$usuario);
-	mysql_query($elimina);
+	$baja=sprintf("delete from usuarios where usuario=%s limit 1",$usuario);
+	// $update=sprintf("update usuarios set tipousuario=baja where usuario=%s",$usuario);
+	mysql_query($baja);
+	//el delete update cuantos se afectan
 	if(mysql_affected_rows()>0){
 		$respuesta=true;
 	}
-	$salidaJSON = array('respuesta' => $respuesta);
+	$salidaJSON=array('respuesta'=>$respuesta);
+	print json_encode($salidaJSON);
+}
+function consultas(){
+	$respuesta=false;
+	mysql_connect("localhost","root","");
+	mysql_select_db("cursopw");
+	$consulta="select * from usuarios";
+	$resultado=mysql_query($consulta);
+	if(mysql_num_rows($resultado)>0)
+	{
+		$respuesta=true;
+		$tabla="<tr><th>Usuario</th><th>Tipo Usuario</th><th>Departamento</th></tr>";
+		while($registro=mysql_fetch_array($resultado))
+		{
+			$tabla.="<tr>";
+			$tabla.="<td>".$registro["usuario"]."</td>";
+			$tabla.="<td>".$registro["tipo"]."</td>";
+			$tabla.="<td>".$registro["depto"]."</td>";
+			$tabla.="</tr>";
+		}
+	}
+	$salidaJSON= array('respuesta' => $respuesta, 'tabla' => $tabla);
 	print json_encode($salidaJSON);
 }
 
@@ -96,12 +144,20 @@ switch ($accion) {
 	case 'guardaUsuario':
 		guardaUsuario();
 		break;
+	case 'LlenarCampos':
+		LlenarCampos();
+		# code...
+		break;
 	case 'bajaUsuario':
 		bajaUsuario();
 			# code...
-			break;
+		break;
+	case 'consultas';
+		consultas();
 	default:
 		# code...
 		break;
+		
+//CON EL ENTER MUESTRE DATOS DEL USUARIO
 }
 ?>
